@@ -1,0 +1,9 @@
+{
+  "name": "centrifugo-cmd",
+  "version": "1.0.0",
+  "description": "Centrifugo NodeJS Sender",
+  "main": "index.js",
+  "repository": "git@github.com:Ivan-Baranov/centrifugo-cmd.git",
+  "author": "Ivan Baranov <i.m.baranov@gmail.com>",
+  "license": "MIT"
+}

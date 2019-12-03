@@ -1,2 +1,2 @@
-# centrifugo-cmd
+# Centrifugo cmd
 NodeJS Centrifugo Sender
