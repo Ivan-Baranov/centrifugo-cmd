@@ -20,6 +20,7 @@ const url = new URL(process.env.CENTRIFUGO_API_URL);
  */
 async function centSend(channel, data = {}) {
   assert(channel, "Empty channel name");
+
   const payload = JSON.stringify({
     method: "publish",
     params: {
@@ -35,16 +36,15 @@ async function centSend(channel, data = {}) {
     method: "POST",
     headers: {
       Authorization: "apikey " + process.env.CENTRIFUGO_API_KEY,
-      "Content-Length": payload.length
+      "Content-Length": Buffer.byteLength(payload)
     }
   };
 
   return new Promise((resolve, reject) => {
     let result = "";
     const req = http.request(options, res => {
-      console.log(`statusCode: ${res.statusCode}`);
       if (res.statusCode !== 200) {
-        reject("Error Code: " + res.statusCode);
+        reject(`Error Send Cent message [${res.statusCode}]`);
       }
       res.on("data", chunk => {
         result += chunk.toString();
@@ -53,7 +53,7 @@ async function centSend(channel, data = {}) {
         resolve();
       });
     });
-    req.on("error", e => reject(e));
+    req.on("error", e => reject(`Error Send Cent message [${e.message}]`));
     req.write(payload);
     req.end();
   });
