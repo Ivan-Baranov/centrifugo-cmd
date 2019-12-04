@@ -1,6 +1,6 @@
 {
   "name": "centrifugo-cmd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Centrifugo NodeJS Sender",
   "main": "index.js",
   "repository": "git@github.com:Ivan-Baranov/centrifugo-cmd.git",
